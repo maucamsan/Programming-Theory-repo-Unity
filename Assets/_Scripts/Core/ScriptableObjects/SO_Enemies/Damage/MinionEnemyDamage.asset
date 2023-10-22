@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3d7748fe83eed48b543ee8e7bb7b21, type: 3}
   m_Name: MinionEnemyDamage
   m_EditorClassIdentifier: 
-  Value: 2.5
+  Value: 2

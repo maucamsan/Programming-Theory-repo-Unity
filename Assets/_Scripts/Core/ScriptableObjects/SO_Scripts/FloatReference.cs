@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Core.Scriptables
 {
@@ -13,11 +14,11 @@ namespace Core.Scriptables
     [System.Serializable]
     public class FloatReference : MonoBehaviour
     {
-
+        // TODO: Implement multiton to manage different instances of the static dictionary so that it is not created more than once!
         [System.Serializable]
-        public class VaribleType
+        public class VariableType
         {
-            public Variables SelectedVarible;
+            public Variables SelectedVariable;
             public bool UseConstant;
             public float ConstantValue;
             public FloatVariable Variable;
@@ -29,7 +30,8 @@ namespace Core.Scriptables
 
         }
       
-        [SerializeField] public VaribleType[] floatVariableDict;
+        [SerializeField] public VariableType[] floatVariableDict;
+        
 
         // public float AssignVarible(int v)
         // {
