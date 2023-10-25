@@ -5,11 +5,12 @@ using UnityEngine.PlayerLoop;
 
 namespace Core.Scriptables
 {
-    public enum Variables
+    public enum CharacterStatsVariables
     {
         DAMAGE, 
         HEALTH,
-        SPEED
+        SPEED,
+        RESISTANCE,
     }
     [System.Serializable]
     public class FloatReference : MonoBehaviour
@@ -18,7 +19,7 @@ namespace Core.Scriptables
         [System.Serializable]
         public class VariableType
         {
-            public Variables SelectedVariable;
+            public CharacterStatsVariables SelectedVariable;
             public bool UseConstant;
             public float ConstantValue;
             public FloatVariable Variable;

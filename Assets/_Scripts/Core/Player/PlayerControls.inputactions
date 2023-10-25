@@ -11,7 +11,17 @@
                     "id": "0bbf4096-be4c-4421-9f1e-b8c83fe6ffce",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AttitudeMovement",
+                    "type": "Value",
+                    "id": "48170da8-1cc0-4af1-b729-3f9ab9ea6043",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -133,6 +143,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c355bb0-9359-4a14-9ab8-adccbf1881a6",
+                    "path": "<AttitudeSensor>/attitude",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttitudeMovement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

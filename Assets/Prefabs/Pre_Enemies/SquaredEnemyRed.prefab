@@ -103,13 +103,14 @@ GameObject:
   - component: {fileID: 973555573254258370}
   - component: {fileID: 2938951126347029582}
   - component: {fileID: 6391813201810913480}
+  - component: {fileID: 4516599541733125910}
   m_Layer: 0
   m_Name: SquaredEnemyRed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &973555573254258368
 Transform:
   m_ObjectHideFlags: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minStopDistance: 1
+  EnemyPoolObject: 0
 --- !u!114 &973555573254258375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +268,19 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_SortAtRoot: 0
+--- !u!114 &4516599541733125910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973555573254258373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a5b843c94971243a2fb2780be9c471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTypeOfCharacter: 1
 --- !u!1 &3333523744095096187
 GameObject:
   m_ObjectHideFlags: 0

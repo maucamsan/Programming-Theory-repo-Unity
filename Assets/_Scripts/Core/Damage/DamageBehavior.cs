@@ -52,24 +52,22 @@ namespace Core.Damage
                 if (other.CompareTag("Enemy"))
                 {
                     
-                    _damage = other.GetComponent<FloatReference>().floatVariableDict[(int)Variables.DAMAGE].Value;
-                    Debug.Log("Supposedly done damage by enemy: " + _damage);
+                    //_damage = other.GetComponent<FloatReference>().floatVariableDict[(int)CharacterStatsVariables.DAMAGE].Value;
+                    _damage = other.gameObject.GetComponent<CharacterStats>().GetDamage();
                     _takeDamage = true;
                     StartCoroutine(nameof (DamageTakenCoroutine), _damage);
                 }
             }
 
             // Modify compared tag since the player does not make damage by contact
-            if (other.CompareTag("Player"))
-            {
-                _damage = other.GetComponent<FloatReference>().floatVariableDict[(int)Variables.DAMAGE].Value;
-                    Debug.Log("Supposedly done damage by Player: " + _damage);
-                _takeDamage = true;
-                StartCoroutine(nameof (DamageTakenCoroutine), _damage);
-            }
+        }
+
+        public void EnemyTakenDamage(float damage)
+        {
+            TakeDamage(damage);
         }
     
-      
+
 
         void OnTriggerExit2D(Collider2D other)
         {

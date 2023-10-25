@@ -8,14 +8,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/_Scenes/MainScene.unity
-    guid: 59966c5ebe758f0488aa3c4ca5476d35
-  - enabled: 0
-    path: Assets/_Scenes/SeeIfErase/InputTest.unity
-    guid: 391e794ee47e10b4cb79da47f9acf4c8
-  - enabled: 1
-    path: Assets/_Scenes/SeeIfErase/OldInputTest.unity
-    guid: 81cc14c147e85a2429bff072d071cc32
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 301f4a7bd6a9fde40968b693874224a3, type: 2}

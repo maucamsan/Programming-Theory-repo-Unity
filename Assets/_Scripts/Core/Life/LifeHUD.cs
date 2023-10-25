@@ -8,14 +8,19 @@ namespace Core.Health
     public class LifeHUD : MonoBehaviour
     {
         private SpriteMask _healthBar;
-        private float _initialScale;
+        private float _initialScale = 0.0f;
 
         void Awake()
         {
             _healthBar = GetComponentInChildren<SpriteMask>();
         }
+        void OnEnable()
+        {
+            RestoreHUD();
+        }
         void Start()
         {
+            
             _initialScale = _healthBar.transform.localScale.y;
         }
 
@@ -24,6 +29,10 @@ namespace Core.Health
             if (_healthBar.transform.localScale.y == 0) return;
             var normalizedValue = NormalizeValue(0, maxLifeReference, 0, _initialScale, modifierLifeValue);
             _healthBar.transform.localScale =  new Vector3(_healthBar.transform.localScale.x, normalizedValue, _healthBar.transform.localScale.z);
+        }
+        public void RestoreHUD()
+        {
+            _healthBar.transform.localScale = new Vector3(_healthBar.transform.localScale.x, _healthBar.transform.localScale.x, _healthBar.transform.localScale.z);
         }
 
         private float NormalizeValue(float minMeasurementRangeValue, float maxMeasurementRangeValue, float minRangeTargetValue, float maxRangeTargetValue, float currentValue)

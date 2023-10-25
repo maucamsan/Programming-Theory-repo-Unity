@@ -35,6 +35,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AttitudeMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""48170da8-1cc0-4af1-b729-3f9ab9ea6043"",
+                    ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -158,6 +167,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c355bb0-9359-4a14-9ab8-adccbf1881a6"",
+                    ""path"": ""<AttitudeSensor>/attitude"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttitudeMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,6 +187,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // New action map
         m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
         m_Newactionmap_Move = m_Newactionmap.FindAction("Move", throwIfNotFound: true);
+        m_Newactionmap_AttitudeMovement = m_Newactionmap.FindAction("AttitudeMovement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,11 +250,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Newactionmap;
     private List<INewactionmapActions> m_NewactionmapActionsCallbackInterfaces = new List<INewactionmapActions>();
     private readonly InputAction m_Newactionmap_Move;
+    private readonly InputAction m_Newactionmap_AttitudeMovement;
     public struct NewactionmapActions
     {
         private @PlayerControls m_Wrapper;
         public NewactionmapActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Newactionmap_Move;
+        public InputAction @AttitudeMovement => m_Wrapper.m_Newactionmap_AttitudeMovement;
         public InputActionMap Get() { return m_Wrapper.m_Newactionmap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -246,6 +269,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @AttitudeMovement.started += instance.OnAttitudeMovement;
+            @AttitudeMovement.performed += instance.OnAttitudeMovement;
+            @AttitudeMovement.canceled += instance.OnAttitudeMovement;
         }
 
         private void UnregisterCallbacks(INewactionmapActions instance)
@@ -253,6 +279,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @AttitudeMovement.started -= instance.OnAttitudeMovement;
+            @AttitudeMovement.performed -= instance.OnAttitudeMovement;
+            @AttitudeMovement.canceled -= instance.OnAttitudeMovement;
         }
 
         public void RemoveCallbacks(INewactionmapActions instance)
@@ -273,5 +302,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface INewactionmapActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnAttitudeMovement(InputAction.CallbackContext context);
     }
 }
